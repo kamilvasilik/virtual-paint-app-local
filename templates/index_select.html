@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+{% load static %}
+{% load hotkeys %}
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Virtual Paint">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'nicepage.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'Home.css' %}" media="screen">
+    <script class="u-script" type="text/javascript" src="{% static 'jquery.js' %}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{% static 'nicepage.js' %}" defer=""></script>
+    <meta name="generator" content="Nicepage 2.26.5, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"url": "index.html"
+    }</script>
+    <meta property="og:title" content="Home">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+    <link rel="canonical" href="index.html">
+    <meta property="og:url" content="index.html">
+    {% setup_hotkeys %}
+    <style>
+    .slidecontainer {
+      width: 100%;
+    }
+
+    .slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 15px;
+      border-radius: 5px;
+      background: #d1dfe8;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
+
+    .slider:hover {
+      opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #1a4e8a;
+      cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #1a4e8a;
+      cursor: pointer;
+    }
+
+    .invisible {
+      display: none;
+    }
+    </style>
+    <script async src="{% static 'opencv.js' %}" type="text/javascript" onload="onCvLoaded();"></script>
+  </head>
+  <body data-home-page="" data-home-page-title="Home" class="u-body u-overlap"><header class="u-clearfix u-header u-header" id="sec-e3ca"><div class="u-clearfix u-sheet u-sheet-1">
+        <h1 class="u-heading-font u-text u-text-default u-text-palette-1-base u-title u-text-1">Virtual Paint</h1>
+        <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
+          <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0;">
+            <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
+              <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use></svg>
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><symbol id="menu-hamburger" viewBox="0 0 16 16" style="width: 16px; height: 16px;"><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
+</symbol>
+</defs></svg>
+            </a>
+          </div>
+          <div class="u-custom-menu u-nav-container">
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'how_to_paint' %}" style="padding: 10px 20px;">How to paint</a>
+</li></ul>
+          </div>
+          <div class="u-custom-menu u-nav-container-collapse">
+            <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+              <div class="u-menu-close"></div>
+              <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'how_to_paint' %}" style="padding: 10px 20px;">How to paint</a>
+</li></ul>
+            </div>
+            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+          </div>
+        </nav>
+      </div></header>
+    <section class="u-clearfix u-section-1" id="sec-a314">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout">
+            <div class="u-layout-row">
+              <div class="u-container-style u-layout-cell u-left-cell u-size-15 u-layout-cell-1">
+                <div class="u-container-layout u-container-layout-1">
+
+                  <form action="" method="post">
+                    {% csrf_token %}
+                  <br>
+                  <input type="submit" id="savebutton" class="u-border-radius-50 u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-btn-1" value="Save Color">
+                  <a href="{% url 'index' %}" class="u-border-radius-50 u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-btn-2">Draw<br>
+                  </a>
+                  <br>
+                  <div class="slidecontainer">
+                      <input type="range" min="0" max="179" value="0" class="slider" id="huemin" name="huemin">
+                      <p class="invisible" id="huemin_value"></p>
+                  </div>
+                  <div class="slidecontainer">
+                      <input type="range" min="0" max="179" value="179" class="slider" id="huemax" name="huemax">
+                      <p class="invisible" id="huemax_value"></p>
+                  </div>
+                  <div class="slidecontainer">
+                      <input type="range" min="0" max="255" value="0" class="slider" id="satmin" name="satmin">
+                      <p class="invisible" id="satmin_value"></p>
+                  </div>
+                  <div class="slidecontainer">
+                      <input type="range" min="0" max="255" value="255" class="slider" id="satmax" name="satmax">
+                      <p class="invisible" id="satmax_value"></p>
+                  </div>
+                  <div class="slidecontainer">
+                      <input type="range" min="0" max="255" value="0" class="slider" id="valmin" name="valmin">
+                      <p class="invisible" id="valmin_value"></p>
+                  </div>
+                  <div class="slidecontainer">
+                      <input type="range" min="0" max="255" value="255" class="slider" id="valmax" name="valmax">
+                      <p class="invisible" id="valmax_value"></p>
+                  </div>
+
+                  </form>
+
+                </div>
+              </div>
+              <div class="u-container-style u-layout-cell u-right-cell u-size-45 u-layout-cell-2">
+                <div class="invisible">
+                    <video id="video" width="640" height="480"></video>
+                </div>
+                <div class="u-container-layout u-valign-middle u-container-layout-2">
+                    <canvas class="u-expand-resize u-image u-image-1" id="canvasOutput" data-image-width="2000" data-image-height="1333"></canvas>
+                </div>
+                  <script>
+                    function onCvLoaded () {
+                        console.log('cv', cv);
+                        cv.onRuntimeInitialized = onReady;
+                    }
+                    const video = document.getElementById('video');
+                    const actionBtn = document.getElementById('savebutton');
+                    const width = 640;
+                    const height = 480;
+                    const FPS = 30;
+                    let stream;
+                    let streaming = true;
+                    function onReady () {
+                        let src;
+                        let dst;
+                        const cap = new cv.VideoCapture(video);
+                        start();
+
+                        actionBtn.addEventListener('click', () => {
+                            if (streaming) {
+                                stop();
+<!--                                actionBtn.textContent = 'Start';-->
+                            } else {
+                                start();
+<!--                                actionBtn.textContent = 'Stop';-->
+                            }
+                        });
+
+                        function start () {
+                            navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+                            .then(_stream => {
+                                stream = _stream;
+                                console.log('stream', stream);
+                                video.srcObject = stream;
+                                video.play();
+                                streaming = true;
+                                src = new cv.Mat(height, width, cv.CV_8UC4);
+                                dst = new cv.Mat(height, width, cv.CV_8UC4);
+                                hsv = new cv.Mat(height, width, cv.CV_8UC4);
+                                mask = new cv.Mat(height, width, cv.CV_8UC4);
+
+                                setTimeout(processVideo, 0)
+                            })
+                            .catch(err => console.log(`An error occurred: ${err}`));
+                        }
+
+                        function stop () {
+                            if (video) {
+                                video.pause();
+                                video.srcObject = null;
+                            }
+                            if (stream) {
+                                stream.getVideoTracks()[0].stop();
+                            }
+                            streaming = false;
+                        }
+
+                        function processVideo () {
+                            if (!streaming) {
+                                src.delete();
+                                dst.delete();
+                                mask.delete();
+                                hsv.delete();
+                                return;
+                            }
+                            const begin = Date.now();
+                            cap.read(src);
+
+                            cv.flip(src, src, 1);
+                            cv.cvtColor(src, dst, cv.COLOR_RGBA2BGR);
+                            cv.cvtColor(dst, hsv, cv.COLOR_BGR2HSV);
+
+                            var slider1 = document.getElementById("huemin");
+                            var slider2 = document.getElementById("huemax");
+                            var slider3 = document.getElementById("satmin");
+                            var slider4 = document.getElementById("satmax");
+                            var slider5 = document.getElementById("valmin");
+                            var slider6 = document.getElementById("valmax");
+
+                            var hmin = Number(slider1.value);
+                            var hmax = Number(slider2.value);
+                            var smin = Number(slider3.value);
+                            var smax = Number(slider4.value);
+                            var vmin = Number(slider5.value);
+                            var vmax = Number(slider6.value);
+
+                            slider1.oninput = function() {
+                                hmin = this.value;
+                            }
+                            slider2.oninput = function() {
+                                hmax = this.value;
+                            }
+                            slider3.oninput = function() {
+                                smin = this.value;
+                            }
+                            slider4.oninput = function() {
+                                smax = this.value;
+                            }
+                            slider5.oninput = function() {
+                                vmin = this.value;
+                            }
+                            slider6.oninput = function() {
+                                vmax = this.value;
+                            }
+
+                            let low = new cv.Mat(hsv.rows, hsv.cols, hsv.type(), [hmin, smin, vmin, 0]);
+                            let high = new cv.Mat(hsv.rows, hsv.cols, hsv.type(), [hmax, smax, vmax, 255]);
+
+                            cv.inRange(hsv, low, high, mask);
+                            low.delete(); high.delete();
+                            cv.bitwise_and(src, src, dst, mask);
+
+                            cv.imshow('canvasOutput', dst);
+
+                            const delay = 1000/FPS - (Date.now() - begin);
+                            setTimeout(processVideo, delay);
+
+                        }
+                    }
+
+<!--                    $("#savebutton").click(function () {-->
+<!--                        var destinationCanvas = document.createElement("canvasOutput");-->
+<!--                        var destCtx = destinationCanvas.getContext('2d');-->
+
+<!--                        destinationCanvas.height = 640;-->
+<!--                        destinationCanvas.width = 480;-->
+
+<!--                        destCtx.drawImage(document.getElementById("canvasOutput"), 0, 0);-->
+
+<!--                        var imagebase64data = destinationCanvas.toDataURL("image/png");-->
+<!--                        imagebase64data = imagebase64data.replace('data:image/png;base64,', '');-->
+<!--                        $.ajax({-->
+<!--                            type: 'POST',-->
+<!--                            url: '/',-->
+<!--                            data: '{ "imageData" : "' + imagebase64data + '" }',-->
+<!--                            contentType: 'application/json; charset=utf-8',-->
+<!--                            dataType: 'text',-->
+<!--                            success: function (out) {-->
+<!--                                alert('Image uploaded successfully..');-->
+<!--                            }-->
+<!--                        });-->
+<!--                    });-->
+
+                  </script>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-c3c8"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">Virtual Paint 2020.&nbsp;<br>
+        </p>
+      </div></footer>
+  </body>
+</html>
